@@ -30,4 +30,17 @@ public class Configure extends WebSecurityConfigurerAdapter {
         dao.setUserDetailsService(userDetailsService);
         return dao;
     }
+
+
+
+    //with SecurityFilterChain(WE DON'T NEED TO extend WebSecurityConfigurerAdapter!!)
+     /**@Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
+       return security.authorizeRequests()
+               .antMatchers("/sec/admin").hasAuthority("write")
+               .antMatchers("/sec/client").hasAnyAuthority("read","write")
+               .antMatchers("/sec/all").permitAll()
+               .and().formLogin().permitAll()
+               .and().build();
+    }**/
 }
